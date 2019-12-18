@@ -5,7 +5,6 @@ import FriendsCard from "./FriendsCard.js";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
-  useEffect(() => getData(), []);
   function getData() {
     axiosWithAuth()
       .get("http://localhost:5000/api/friends")
@@ -14,6 +13,8 @@ const Friends = () => {
       })
       .catch(err => console.log(err.response));
   }
+  useEffect(() => getData(), []);
+  
   console.log("list of friends", friends);
   return (
     <div>
